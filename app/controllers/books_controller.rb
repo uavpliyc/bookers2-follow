@@ -1,7 +1,11 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @book = Book.find(params[:id])
+    # unless @book.user == current_user
+    #   render 'index'
+    # end
     @user = User.find(@book.user_id)
   end
 
