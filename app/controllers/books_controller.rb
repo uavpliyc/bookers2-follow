@@ -3,11 +3,6 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    # @bookdetail = Book.find(params[:id])
-    # unless @book.user == current_user
-    #   @books = Book.all
-    #   render 'index'
-    # end
     @user = User.find(@book.user_id)
   end
 
