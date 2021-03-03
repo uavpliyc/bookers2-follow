@@ -12,8 +12,8 @@ class UsersController < ApplicationController
     @user = current_user
     @users = User.all
     @book = Book.new
-    @following_users = current_user.following_user
-    @follower_users = current_user.follower_user
+    # @following_users = current_user.following_user
+    # @follower_users = current_user.follower_user
   end
 
   def edit
@@ -28,17 +28,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def followers
-    @user = User.find(params[:id])
-    @users = @user.followers
-    render 'show_followers'
-  end
+  # def followers
+  #   @user = User.find(params[:id])
+  #   @users = @user.followers
+  #   render 'show_followers'
+  # end
 
-  def followeds
-    @user = User.find(params[:id])
-    @users = @user.followeds
-    render 'show_followeds'
-  end
+  # def followeds
+  #   @user = User.find(params[:id])
+  #   @users = @user.followeds
+  #   render 'show_followeds'
+  # end
 
   private
   def user_params

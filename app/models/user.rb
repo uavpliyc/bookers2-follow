@@ -13,11 +13,7 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
-  attachment :profile_image, destroy: false
 
-  validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
-  validates :introduction, length: {maximum: 50}
-  
   def already_favorited?(book)
     self.favorites.exists?(book_id: book.id)
   end
@@ -36,5 +32,10 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+  
+  attachment :profile_image, destroy: false
+
+  validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
+  validates :introduction, length: {maximum: 50}
   
 end
